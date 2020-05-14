@@ -11,17 +11,41 @@
 
 由于以上限制，用户在资源管理器内双击文件后，基本只能通过网页或客户端打开 FTP 中的文件链接。这对于一些文本文件或者压缩包来说，并没有很大的影响，这些文件本身也是需要下载到本地再读取访问的。但是对于可以流式传输并读取的大型文件来说，会浪费很多时间和硬盘空间用于下载文件。
 
-拿很典型的视频文件来说，目前多数播放器均支持网络串流播放，如 PotPlayer 可以通过下面这个命令去播放网络媒体资源（该调用方法同播放本地文件的方法一致）：
+以很典型的视频文件为例，目前多数播放器均支持网络串流播放，如 PotPlayer 可以通过下面这个命令播放网络媒体资源（该调用方法同播放本地文件的方法一致）：
 
 ```powershell
-PotPlayerMini64.exe {ftp_file_url}
+PotPlayerMini64.exe "URL_of_file"
 ```
 
 FTPow 的初衷，就是要实现在资源管理器的 FTP 网络位置中，用户通过双击视频文件的方式，就能够自动调用 PotPlayer 播放，以优化用户体验。
 
 ### 实现思路
 
+好消息是，微软的 hash 算法已被成功逆向。目前网络上至少有两个工具可以实现让用户自定义文件类型或协议类型所关联的默认应用。而由 Danysys 开发的 SFTA 就是其中之一，该项目相关代码已在 GitHub 开源，关于这个工具的具体使用方式可移步这个文章查看。
 
+那么，如果我们将 FTP 协议的默认应用关联到 PotPlayer，问题是否就解决了呢？
+
+并没有，主要原因有以下几点：
+
+1. 并非所有文件都要用 P 打开
+
+2. FTP 密码问题
+
+   ```
+   ftp://{username}@{ip address or domain}/{some folder path}/file.mp4
+   ```
+
+   ```
+   ftp://{username}:{password}@{ip address or domain}/{some folder path}/file.mp4
+   ```
+
+3. URL 编码问题
+
+4. 字符编码问题
+
+5. 不同的文件类型用不同的应用打开
+
+中间层 FTPow
 
 ### 安装
 
@@ -29,7 +53,11 @@ FTPow 的初衷，就是要实现在资源管理器的 FTP 网络位置中，用
 
 SFTA下载地址：
 
-FTPow下载地址：见 Release 页面。
+FTPow下载地址：见 [Release 页面](https://github.com/Sec-ant/FTPow/releases)。
+
+### 运行环境要求
+
+[.NET Framework 4.6+ Runtime](https://dotnet.microsoft.com/download/dotnet-framework/net46)
 
 ### 用法
 
@@ -57,12 +85,22 @@ FTPow下载地址：见 Release 页面。
 
 ### 注意
 
-- 用户权限
+- 不需要管理员权限，单用户生效
 
 - windows 查封
 
+
+
+### 局限性
+
+- 
+
+
+
 ### 证书
 
-
+GPLv3.0
 
 ### 捐赠
+
+支付宝和微信
