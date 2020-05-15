@@ -21,7 +21,7 @@ FTPow 开发的最初目的，就是要实现在资源管理器的 FTP 网络位
 
 ### 实现思路
 
-好消息是，目前主要有两种办法绕过上面的限制，从而实现让用户自定义文件类型或协议类型所关联的默认应用：1. 通过逆向微软的 hash 算法（如 [SetUserFTA](https://kolbi.cz/blog/2017/10/25/setuserfta-userchoice-hash-defeated-set-file-type-associations-per-user/)，但作者闭源了）；2. 劫持系统内部计算 hash 的接口（由 [Danysys](https://danysys.com/) 开发的 [SFTA](https://github.com/DanysysTeam/SFTA)，但劫持接口的办法是由看雪论坛里面的国人实现的：https://bbs.pediy.com/thread-213954.htm）。本软件借助了 SFTA，该项目相关代码已在 [GitHub](https://github.com/DanysysTeam/SFTA) 开源，关于这个工具的具体使用方法可移步[这个文章](https://danysys.com/set-file-type-association-default-application-command-line-windows-10-userchoice-hash-internal-method/)查看。
+好消息是，目前主要有两种办法绕过上面的限制，从而实现让用户自定义文件类型或协议类型所关联的默认应用：1. 通过逆向微软的 hash 算法（如 [SetUserFTA](https://kolbi.cz/blog/2017/10/25/setuserfta-userchoice-hash-defeated-set-file-type-associations-per-user/)，但作者闭源了）；2. 劫持系统内部计算 hash 的接口（由 [Danysys](https://danysys.com/) 开发的 [SFTA](https://github.com/DanysysTeam/SFTA)，但劫持接口的办法是由[看雪论坛里面的国人实现的](https://bbs.pediy.com/thread-213954.htm)。本软件借助了 SFTA，该项目相关代码已在 [GitHub](https://github.com/DanysysTeam/SFTA) 开源，关于这个工具的具体使用方法可移步[这个文章](https://danysys.com/set-file-type-association-default-application-command-line-windows-10-userchoice-hash-internal-method/)查看。
 
 那么，如果我们通过 SFTA ，将 FTP 协议的默认应用关联到 PotPlayer，问题是否就解决了呢？
 
