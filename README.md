@@ -83,7 +83,7 @@ FTPow下载地址：见 [releases 页面](https://github.com/Sec-ant/FTPow/relea
 
 ### 配置文件说明
 
- FTPow.exe 同目录下的 config.json 是用户可自定义的配置文件，为 JSON 解构，其根对象结构如下：
+ FTPow.exe 同目录下的 config.json 是用户可自定义的配置文件，为 JSON 格式，其根对象结构如下：
 
 - `servers` **数组**
 
