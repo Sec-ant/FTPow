@@ -86,7 +86,7 @@ namespace FTPow
                 // Fallback Execution
                 URL = DecodeURL(uconfig.fallback, URL);
                 URL = Uri.EscapeUriString(URL);
-                ExecuteApplication(uconfig.fallback.programPath, string.Join(URL, uconfig.fallback.command));
+                System.Diagnostics.Process.Start(uconfig.fallback.programPath, string.Join(URL, uconfig.fallback.command));
                 return;
             }
         }
