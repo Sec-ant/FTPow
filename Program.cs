@@ -72,10 +72,10 @@ namespace FTPow
                             URL = DecodeURL(item, URL);
 
                             // Append Query String
-                            URL += "?" + item.queryString;
+                            URL += item.queryString;
 
                             // Execute
-                            ExecuteApplication(item.programPath, string.Join(URL, item.command));
+                            System.Diagnostics.Process.Start(item.programPath, string.Join(URL, item.command));
 
                             // Return after Execution
                             return;
